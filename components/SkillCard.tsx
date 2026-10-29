@@ -1,18 +1,21 @@
 
 interface SkillCardProps {
   skill: string;
+  description: string;
 }
 
-export default function SkillCard({ skill }: SkillCardProps) {
+export default function SkillCard({
+  skill,
+  description,
+}: SkillCardProps) {
   return (
-    <article className="rounded-xl border border-slate-700 bg-slate-900 p-5 transition hover:border-sky-400">
-      <h3 className="font-semibold text-white">
+    <article className="rounded-xl border border-slate-700 bg-slate-900 p-5 transition duration-300 hover:border-sky-400 hover:shadow-lg hover:shadow-sky-950/30">
+      <h3 className="text-lg font-bold text-white">
         {skill}
       </h3>
 
       <p className="mt-2 text-sm leading-6 text-slate-300">
-        A technology or skill I am developing through
-        coursework and practical projects.
+        {description}
       </p>
     </article>
   );

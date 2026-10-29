@@ -5,18 +5,50 @@ import SkillCard from "@/components/SkillCard";
 export const metadata: Metadata = {
   title: "About Me",
   description:
-    "Learn about Benedicta Etim, my web development journey, and the technologies I am learning.",
+    "Learn about Benedicta Etim and her web development journey.",
 };
 
 const skills = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Tailwind CSS",
-  "Git and GitHub",
+  {
+    skill: "HTML",
+    description:
+      "Building the structure of accessible and well-organized web pages.",
+  },
+  {
+    skill: "CSS",
+    description:
+      "Styling web pages with layouts, colors, spacing, and responsive designs.",
+  },
+  {
+    skill: "JavaScript",
+    description:
+      "Learning programming fundamentals, functions, and interactive web features.",
+  },
+  {
+    skill: "React",
+    description:
+      "Creating reusable UI components to build consistent user interfaces.",
+  },
+  {
+    skill: "Next.js",
+    description:
+      "Building web applications using the App Router and file-based routing.",
+  },
+  {
+    skill: "TypeScript",
+    description:
+      "Using types and interfaces to make application code more reliable.",
+  },
+  {
+    skill: "Tailwind CSS",
+    description:
+      "Styling responsive interfaces with utility classes.",
+  },
+  {
+    skill: "Git and GitHub",
+    description:
+      "Tracking code changes, managing repositories, and publishing projects.",
+  },
 ];
 
 export default function About() {
@@ -84,8 +116,12 @@ export default function About() {
         </p>
 
         <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {skills.map((skill) => (
-            <SkillCard key={skill} skill={skill} />
+          {skills.map((item) => (
+            <SkillCard
+              key={item.skill}
+              skill={item.skill}
+              description={item.description}
+            />
           ))}
         </div>
       </section>
