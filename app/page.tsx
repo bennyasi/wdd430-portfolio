@@ -5,31 +5,34 @@ import type { Project } from "@/components/ProjectList";
 
 export const metadata: Metadata = {
   title: "Home",
-  description: "Explore my web development portfolio projects.",
+  description:
+    "Explore Benedicta Etim's web development portfolio and projects.",
 };
 
 const projects: Project[] = [
   {
-    title: "WDD 430 Portfolio",
+    title: "WDD 430 Portfolio Website",
     description:
-      "A responsive portfolio application built with Next.js. It demonstrates reusable TypeScript components, the App Router, shared layouts, and a JSON API endpoint.",
+      "A responsive portfolio website built for WDD 430. It showcases my learning in Next.js App Router, reusable React components, TypeScript, accessible page layouts, and Tailwind CSS styling.",
     technologies: [
       "Next.js",
       "React",
       "TypeScript",
       "Tailwind CSS",
     ],
-    link: "https://github.com/YOUR-USERNAME/wdd430-portfolio",
+    link: "https://github.com/bennyasi/wdd430-portfolio",
   },
   {
-    title: "My Second Project",
+    title: "Next.js Hello API",
     description:
-      "Replace this sample with a description of a second project you have actually built. Explain its purpose, features, and what you learned.",
+      "A simple JSON API endpoint built with the Next.js App Router. It demonstrates how to create a GET route handler and return a JSON response from a Next.js application.",
     technologies: [
-      "Replace with your actual technology",
-      "Add another actual technology",
+      "Next.js",
+      "TypeScript",
+      "REST API",
+      "JSON",
     ],
-    link: "https://github.com/YOUR-USERNAME/YOUR-SECOND-REPOSITORY",
+    link: "/api/hello",
   },
 ];
 
@@ -37,27 +40,34 @@ export default function Home() {
   return (
     <main
       id="main-content"
-      className="mx-auto w-full max-w-6xl flex-1 px-4 py-12 sm:px-6 sm:py-16"
+      className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-12 sm:px-6 sm:py-16"
     >
       <section
         aria-labelledby="hero-title"
         className="mb-12 rounded-3xl border border-slate-700 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950 px-6 py-12 sm:px-10 sm:py-16"
       >
         <p className="text-sm font-bold uppercase tracking-widest text-sky-300">
-          Welcome to my portfolio
+          Benedicta Etim | WDD 430
         </p>
 
         <h1
           id="hero-title"
           className="mt-4 max-w-3xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
         >
-          Building useful experiences for the web.
+          Welcome to my portfolio
         </h1>
 
+        <p className="mt-4 text-xl font-semibold text-sky-200 sm:text-2xl">
+          Building useful experiences for the web.
+        </p>
+
         <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-          Hello! I am a web development student learning to
-          build modern, responsive websites with Next.js,
-          React, TypeScript, and Tailwind CSS.
+          Hello! I am Benedicta Etim, a web development
+          student learning to build modern, responsive
+          websites and applications using Next.js, React,
+          TypeScript, and Tailwind CSS. This portfolio
+          highlights my coursework, projects, and growing
+          web development skills.
         </p>
 
         <a
@@ -78,14 +88,15 @@ export default function Home() {
 
         <h2
           id="projects-title"
-          className="mt-2 text-3xl font-bold text-white"
+          className="mt-2 text-3xl font-bold text-white sm:text-4xl"
         >
           Featured Projects
         </h2>
 
         <p className="mb-7 mt-3 max-w-2xl leading-7 text-slate-300">
-          Explore my projects, the technologies I used, and
-          the skills I am developing.
+          Explore my work, the technologies I use, and the
+          skills I am developing as I learn modern web
+          development.
         </p>
 
         <ProjectList projects={projects} />
@@ -93,3 +104,4 @@ export default function Home() {
     </main>
   );
 }
+

@@ -12,8 +12,12 @@ export default function ProjectCard({
   technologies,
   link,
 }: ProjectCardProps) {
+  const isExternalLink =
+    link?.startsWith("https://") ||
+    link?.startsWith("http://");
+
   return (
-    <article className="flex h-full flex-col rounded-2xl border border-slate-700 bg-slate-900 p-6 shadow-lg transition duration-200 hover:-translate-y-1 hover:border-sky-400">
+    <article className="flex h-full flex-col rounded-2xl border border-slate-700 bg-slate-900 p-6 shadow-lg transition hover:-translate-y-1 hover:border-sky-400">
       <h3 className="text-xl font-bold text-white">
         {title}
       </h3>
@@ -23,18 +27,15 @@ export default function ProjectCard({
       </p>
 
       <div className="mt-5">
-        <h4 className="text-sm font-semibold text-slate-200">
+        <h4 className="text-sm font-bold text-sky-300">
           Technologies
         </h4>
 
-        <ul
-          aria-label={`Technologies used for ${title}`}
-          className="mt-2 flex flex-wrap gap-2"
-        >
+        <ul className="mt-3 flex flex-wrap gap-2">
           {technologies.map((technology) => (
             <li
               key={technology}
-              className="rounded-full border border-sky-800 bg-sky-950 px-3 py-1 text-sm text-sky-200"
+              className="rounded-full border border-slate-600 bg-slate-800 px-3 py-1 text-sm text-slate-200"
             >
               {technology}
             </li>
@@ -42,19 +43,28 @@ export default function ProjectCard({
         </ul>
       </div>
 
-      {link ? (
+      {link && (
         <p className="mt-6">
           <a
             href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex rounded font-semibold text-sky-300 underline-offset-4 hover:text-sky-200 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300"
+            target={isExternalLink ? "_blank" : undefined}
+            rel={
+              isExternalLink
+                ? "noopener noreferrer"
+                : undefined
+            }
+            className="inline-flex items-center gap-2 rounded-lg bg-sky-400 px-4 py-2 font-semibold text-slate-950 transition hover:bg-sky-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300"
           >
-            View Project <span aria-hidden="true">↗</span>
-            <span className="sr-only"> (opens in a new tab)</span>
+            View Project
+            <span aria-hidden="true">↗</span>
+            {isExternalLink && (
+              <span className="sr-only">
+                (opens in a new tab)
+              </span>
+            )}
           </a>
         </p>
-      ) : null}
+      )}
     </article>
   );
 }
