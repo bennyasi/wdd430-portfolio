@@ -1,69 +1,95 @@
-import Image from "next/image";
+
+import type { Metadata } from "next";
+import ProjectList from "@/components/ProjectList";
+import type { Project } from "@/components/ProjectList";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description: "Explore my web development portfolio projects.",
+};
+
+const projects: Project[] = [
+  {
+    title: "WDD 430 Portfolio",
+    description:
+      "A responsive portfolio application built with Next.js. It demonstrates reusable TypeScript components, the App Router, shared layouts, and a JSON API endpoint.",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+    ],
+    link: "https://github.com/YOUR-USERNAME/wdd430-portfolio",
+  },
+  {
+    title: "My Second Project",
+    description:
+      "Replace this sample with a description of a second project you have actually built. Explain its purpose, features, and what you learned.",
+    technologies: [
+      "Replace with your actual technology",
+      "Add another actual technology",
+    ],
+    link: "https://github.com/YOUR-USERNAME/YOUR-SECOND-REPOSITORY",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main
+      id="main-content"
+      className="mx-auto w-full max-w-6xl flex-1 px-4 py-12 sm:px-6 sm:py-16"
+    >
+      <section
+        aria-labelledby="hero-title"
+        className="mb-12 rounded-3xl border border-slate-700 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950 px-6 py-12 sm:px-10 sm:py-16"
+      >
+        <p className="text-sm font-bold uppercase tracking-widest text-sky-300">
+          Welcome to my portfolio
+        </p>
+
+        <h1
+          id="hero-title"
+          className="mt-4 max-w-3xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
+        >
+          Building useful experiences for the web.
+        </h1>
+
+        <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+          Hello! I am a web development student learning to
+          build modern, responsive websites with Next.js,
+          React, TypeScript, and Tailwind CSS.
+        </p>
+
+        <a
+          href="#projects"
+          className="mt-8 inline-flex rounded-lg bg-sky-400 px-5 py-3 font-bold text-slate-950 transition hover:bg-sky-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300"
+        >
+          Explore my projects
+        </a>
+      </section>
+
+      <section
+        id="projects"
+        aria-labelledby="projects-title"
+      >
+        <p className="text-sm font-bold uppercase tracking-widest text-sky-300">
+          My work
+        </p>
+
+        <h2
+          id="projects-title"
+          className="mt-2 text-3xl font-bold text-white"
+        >
+          Featured Projects
+        </h2>
+
+        <p className="mb-7 mt-3 max-w-2xl leading-7 text-slate-300">
+          Explore my projects, the technologies I used, and
+          the skills I am developing.
+        </p>
+
+        <ProjectList projects={projects} />
+      </section>
+    </main>
   );
 }
